@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "acrossB 라벨 채우기 · SUNG",
+  "version": "0.1.14",
+  "description": "선택한 DHL·TikTok 배치 정보를 SUNG 라벨에 입력하고 작업 지시서 창을 엽니다.",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "scripting",
+    "storage",
+    "debugger"
+  ],
+  "host_permissions": [
+    "https://example.invalid/*",
+    "https://docs.google.com/spreadsheets/d/YOUR_SPREADSHEET_ID/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "SUNG Label / Etiqueta / 라벨",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://example.invalid/flow/*"
+      ],
+      "js": [
+        "core.js",
+        "i18n.js",
+        "extractor.js",
+        "work-instructions.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "fill-label": {
+      "suggested_key": {
+        "default": "Alt+Shift+L"
+      },
+      "description": "선택한 acrossB 배치로 라벨 채우기"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'"
+  }
+}
