@@ -1,0 +1,12 @@
+{
+  "name": "acrossb-label-helper",
+  "version": "0.1.14",
+  "private": true,
+  "description": "Configurable public source edition of the v0.1.14 label helper",
+  "scripts": {
+    "configure": "node configure.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
